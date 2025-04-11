@@ -1,0 +1,23 @@
+{
+  "name": "format-bench",
+  "version": "1.0.0",
+  "main": "main.mjs",
+  "type": "module",
+  "engines": {
+    "node": "^23.11"
+  },
+  "scripts": {
+    "test": "node --test",
+    "bench": "node *.benchmark.?js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "benchmark": "^2.1.4",
+    "lodash": "^4.17.21",
+    "mathjs": "^14.4.0",
+    "microtime": "^3.1.1",
+    "platform": "^1.3.6"
+  }
+}
