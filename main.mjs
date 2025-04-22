@@ -9,10 +9,7 @@ export const formatNumber = (value) => {
 };
 
 
-export const trimLastZeroes = (value) => {
-  if (value.indexOf('.') === -1) return value;
-  return value.replace(/\.?0+$/, '');
-};
+export const trimLastZeroes = (value) => value.includes('.') ? value.replace(/\.?0+$/, '') : value;
 
 export const formatFixed = (n, p = 2) => n.toFixed(p);
 
