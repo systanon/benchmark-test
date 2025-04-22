@@ -2,7 +2,7 @@ const DIGIT_GRADE_REGEX = /(\d+)(\d{3})/;
 
 export const formatToString = (n) => `${n}`;
 
-export const addSpace = (value) => {
+export const formatNumber = (value) => {
   const [integer, fraction] = value.split('.')
   const formattedInteger = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
   return fraction ? `${formattedInteger}.${fraction}` : formattedInteger
@@ -36,7 +36,7 @@ export const formatByPrecision = (n, { precision, zeroEnd = false, spase = false
   if (zeroEnd) {
     scaled = trimLastZeroes(scaled);
   } else if (spase) {
-    scaled = addSpace(scaled);
+    scaled = formatNumber(scaled);
   }
   return scaled;
 };

@@ -1,7 +1,7 @@
 import test from 'node:test'
 import { strictEqual, ok } from 'node:assert';
 
-import { formatByPrecision, formatByStep, addSpace } from './main.mjs'
+import { formatByPrecision, formatByStep, formatNumber, trimLastZeroes } from './main.mjs'
 
 test('Price formating', { concurrency: true }, async (t) => {
   await t.test('formatByPrecision', (t) => {
@@ -38,7 +38,21 @@ test('Price formating', { concurrency: true }, async (t) => {
     ]
 
     testCases.forEach(({ value, expected }) => {
-      const actual = addSpace(value)
+      const actual = formatNumber(value)
+      const message = `expected: ${expected}, actual: ${actual}, value: ${value}`
+
+      strictEqual(actual, expected, message)
+    })
+  })
+  await t.test('trimLastZeroes', (t) => {
+    const testCases = [
+      { value: '0.34500', expected: '0.345' },
+      { value: '1000.00', expected: '1000' },
+  
+    ]
+
+    testCases.forEach(({ value, expected }) => {
+      const actual = trimLastZeroes(value)
       const message = `expected: ${expected}, actual: ${actual}, value: ${value}`
 
       strictEqual(actual, expected, message)
